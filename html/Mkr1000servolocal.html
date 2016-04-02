@@ -211,16 +211,16 @@ function connServo (servo)
    		 $('#conn_but' + servo).text ('Disconnect');
       });
    } else {
-      var servo_id = $('#servo_id' + servo).val ( );
-      var requestURL = "http://" + DEVICE_IP + "/servoClose?" + servo_id;
-
-      $.get (requestURL, function (data) {});
-
       // Try and trun the servo off first.
       // After the servo turn off, send the close request.
       $('#range' + servo).val ('90');
       $('#servo' + servo).val ('90');
       setServoVal (servo);
+      var servo_id = $('#servo_id' + servo).val ( );
+      var requestURL = "http://" + DEVICE_IP + "/servoClose?" + servo_id;
+
+      $.get (requestURL, function (data) {});
+
       $('#servo_id' + servo).val ('-1');
       $('#range' + servo).prop("disabled", true);
       $('#servo' + servo).prop("disabled", true);
